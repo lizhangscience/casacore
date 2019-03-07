@@ -437,7 +437,7 @@ void ROMSFieldColumns::updateMeasComets()
       Directory fieldDir(measCometsPath_p);
       stringstream ss;
       ss << theEphId;
-      Regex ephemTableRegex = Regex::fromPattern("EPHEM"+ss.str()+"_*.tab");
+      Regex ephemTableRegex (Regex::fromPattern("EPHEM"+ss.str()+"_*\\.tab"));
       Vector<String> candidates = fieldDir.find(ephemTableRegex, True, False); // followSymLinks=True, recursive=False
       if(candidates.size()==0){
 	throw(AipsError("Ephemeris table "+ephemTableRegex.regexp()+" not found in "+measCometsPath_p));
